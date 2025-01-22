@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Manufacturing Data</h2>
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept=".csv" required>
+            <button type="submit">CSV Upload</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById("upload-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append("file", document.getElementById("file").files[0]);
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+                document.getElementById("response").innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById("response").innerHTML = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
