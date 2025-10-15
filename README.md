@@ -4,7 +4,15 @@
 This document provides a concise guide to setting up and running an **advanced API in Google Colab**, using **Ngrok for secure tunneling**. The project leverages **machine learning techniques** to predict **machine downtime** using manufacturing datasets. Follow these steps to ensure an **efficient setup** and **seamless operation**.
 
 ---
+## 🎬 Demo Video
 
+[Watch the Predictive Machine Health Demo Video](https://raw.githubusercontent.com/Chandrashekar0123/Predictive-Machine-Health/main/chrome_LoMHMsjQyq.mp4)
+
+✅ The video walkthrough includes:
+- Predictive maintenance overview
+- Real-time machine health monitoring
+- Model input and output demonstration
+---
 ## **⚡ Prerequisites**  
 Before getting started, ensure you have:  
 ✔ **A Google account** to access Google Colab.  
